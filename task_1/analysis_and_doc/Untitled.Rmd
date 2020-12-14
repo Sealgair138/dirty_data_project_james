@@ -1,0 +1,48 @@
+---
+title: "task_1_decathalon_data"
+output: html_notebook
+---
+
+```{r}
+library(here)
+```
+
+```{r}
+here::here()
+```
+# read in data
+```{r}
+decathalon_data <- read_rds(here("raw_data/decathlon.rds"))
+head(decathalon_data)
+```
+# cleaned headers
+```{r}
+dec_data_clean_names <- clean_names(decathalon_data)
+head(dec_data_clean_names)
+```
+```{r}
+row_names_to_column <- tibble::rownames_to_column(dec_data_clean_names)
+```
+```{r}
+colnames(row_names_to_column)
+```
+```{r}
+rowname_to_names <- row_names_to_column %>% 
+  rename(surname = rowname)
+
+rowname_to_names
+```
+```{r}
+
+```
+
+# Q1 Who had the longest long jump seen in the data?
+
+
+# Q2 What was the average 100m time in each competition?
+
+# Q3 Who had the highest total points across both competitions?
+
+# Q4 What was the shot-put scores for the top three competitors in each competition?
+
+# Q5 What was the average points for competitors who ran the 400m in less than 50 seconds vs. those than ran 400m in more than 50 seconds?

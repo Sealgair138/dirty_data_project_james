@@ -55,7 +55,7 @@ highest_total_points <- dec_data_lc %>%
               values_from = points)
 highest_total_points$total_points=rowSums(cbind(highest_total_points$decastar, highest_total_points$olympicg))
 
-head(highest_total_points)
+head(highest_total_points, 10)
   
                
 ```
@@ -73,7 +73,7 @@ shot_put_scores <- dec_data_lc %>%
 ```{r}
 shot_put_scores %>% 
   group_by(olympicg, decastar) %>% 
-  slice(1:3)
+  arrange(desc(olympicg))
 ```
 
 

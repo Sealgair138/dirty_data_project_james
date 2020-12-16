@@ -14,14 +14,13 @@ dec_data_clean_names <- clean_names(decathalon_data)
 
 #show row names as a column
 row_names_to_column <- tibble::rownames_to_column(dec_data_clean_names)
-colnames(row_names_to_column)
 
 # name new column
 rowname_to_names <- row_names_to_column %>% 
   rename(surname = rowname)
 
-# fixing formatting to lower case
-rowname_to_names %>% 
-  tolower(surname, )
+# make all text lower case
+dec_data_lc <- rowname_to_names %>% 
+  mutate(surname = str_to_lower(surname)) %>% 
+  mutate(competition = str_to_lower(competition))
 
-?tolower

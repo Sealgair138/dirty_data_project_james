@@ -1,38 +1,3 @@
----
-title: "task_1_decathalon_data"
-output: html_notebook
----
-
-```{r}
-library(here)
-```
-
-```{r}
-here::here()
-```
-# read in data
-```{r}
-decathalon_data <- read_rds(here("raw_data/decathlon.rds"))
-decathalon_data
-```
-# cleaned headers
-```{r}
-dec_data_clean_names <- clean_names(decathalon_data)
-dec_data_clean_names
-```
-```{r}
-row_names_to_column <- tibble::rownames_to_column(dec_data_clean_names)
-```
-```{r}
-colnames(row_names_to_column)
-```
-```{r}
-rowname_to_names <- row_names_to_column %>% 
-  rename(surname = rowname)
-
-rowname_to_names
-```
-
 # Q1 Who had the longest long jump seen in the data?
 ```{r}
 longest_jump <- dec_data_lc[order(dec_data_lc$long_jump, decreasing = TRUE),]
@@ -75,12 +40,3 @@ shit_put_scores <- shot_put_scores %>%
   head(shit_put_scores ,3)
 ```
 #i took the columnns surname, shot_put< and competition and made a new table with them, i then pivoted the competition column so that the two competitons would have theor own column. i then arranged the columbs in descending order by olymicg. olymicg had the most competitors, this gave me the top 3 scores.
-
-# Q5 What was the average points for competitors who ran the 400m in less than 50 seconds vs. those than ran 400m in more than 50 seconds?
-```{r}
-average_points_400m <- dec_data_lc %>%
-  filter(shot_put %in% 1:50 | surname == "less_than_50")
-
-average_points_400m
-```
-

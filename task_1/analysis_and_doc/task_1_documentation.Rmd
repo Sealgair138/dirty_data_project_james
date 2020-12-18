@@ -57,8 +57,6 @@ highest_total_points <- dec_data_lc %>%
 highest_total_points$total_points=rowSums(cbind(highest_total_points$decastar, highest_total_points$olympicg))
 
 head(highest_total_points, 1)
-  
-               
 ```
 # i took the columns i need and made a new table, i then seperated the two competitions into their own columns, and added the points from each into a total for each surname, this gave me the person with the most points.
 
@@ -76,6 +74,7 @@ shit_put_scores <- shot_put_scores %>%
   arrange(desc(olympicg))
   head(shit_put_scores ,3)
 ```
+#i took the columnns surname, shot_put< and competition and made a new table with them, i then pivoted the competition column so that the two competitons would have theor own column. i then arranged the columbs in descending order by olymicg. olymicg had the most competitors, this gave me the top 3 scores.
 
 # Q5 What was the average points for competitors who ran the 400m in less than 50 seconds vs. those than ran 400m in more than 50 seconds?
 ```{r}
